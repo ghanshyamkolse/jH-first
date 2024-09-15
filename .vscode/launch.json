@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-JHFirstApp<j-h-first>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.mycompany.myapp.JHFirstApp",
+      "projectName": "j-h-first",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

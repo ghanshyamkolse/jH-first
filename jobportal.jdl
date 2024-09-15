@@ -1,0 +1,60 @@
+entity Job {
+  id Long,
+  title String,
+  description String,
+  location String,
+  jobCategory String,
+  company Company,
+  createdAt Instant,
+  updatedAt Instant
+}
+
+entity User {
+  id Long,
+  firstName String,
+  lastName String,
+  email String,
+  password String,
+  searchCriteria SearchCriteria,
+  createdAt Instant,
+  updatedAt Instant
+}
+
+entity Admin {
+  id Long,
+  user User,
+  createdAt Instant,
+  updatedAt Instant
+}
+
+entity Company {
+  id Long,
+  name String,
+  description String,
+  website String,
+  jobs List<Job>,
+  createdAt Instant,
+  updatedAt Instant
+}
+
+entity SearchCriteria {
+  id Long,
+  jobCategory String,
+  location String,
+  user User,
+  createdAt Instant,
+  updatedAt Instant
+}
+
+relationship OneToOne {
+  User{searchCriteria(location, jobCategory)} to SearchCriteria
+}
+
+relationship OneToMany {
+  Company{job(title)} to Job{company},
+  User{job} to Job{user}
+}
+
+relationship OneToOne {
+  Admin{user} to User
+}
